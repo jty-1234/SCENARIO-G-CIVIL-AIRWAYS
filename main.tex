@@ -1,0 +1,146 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs} 
+\usepackage{amsmath}   
+\usepackage{siunitx}   
+\usepackage[hidelinks]{hyperref}   
+\usepackage{caption}   
+\usepackage{float}  
+\usepackage{microtype}
+
+\title{SCENARIO G CIVIL AIRWAYS}
+\author{Celine He}
+\date{March 2026}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+
+\section{Vehicles}
+
+\subsection{Vehicle Payloads}
+
+\subsubsection{Drones}
+
+\section{}
+\subsection{Initial sizing method (symbolic formulation)}
+
+The initial sizing procedure starts from an assumed maximum take-off mass $m_0$ and uses two primary design choices:
+\begin{itemize}
+\item wing loading $W/S$,
+\item disk loading $W/A$,
+\end{itemize}
+together with mission requirements (stall speed $V_\mathrm{stall}$ and cruise speed $V_\mathrm{cruise}$). The goal is to obtain first-cut values of wing area $S$, total rotor disk area $A$, rotor diameter $D$, and the electrical power required in hover and cruise.
+
+\subsubsection{Step 1: Convert mass to weight}
+\begin{equation}
+W = m_0 g ,
+\end{equation}
+where $g$ is gravitational acceleration.
+
+\subsubsection{Step 2: Wing area from stall constraint and wing-loading choice}
+Two lower bounds for the wing reference area $S$ are evaluated.
+
+\paragraph{(a) Stall constraint}
+At stall, the lift equals weight with $C_L=C_{L,\max}$:
+\begin{equation}
+W=\frac{1}{2}\rho V_\mathrm{stall}^2 S C_{L,\max}.
+\end{equation}
+Hence,
+\begin{equation}
+S_\mathrm{stall}=\frac{2W}{\rho V_\mathrm{stall}^2 C_{L,\max}} .
+\end{equation}
+
+\paragraph{(b) Wing-loading choice}
+Given a selected wing loading $(W/S)_\star$,
+\begin{equation}
+S_{W/S}=\frac{W}{(W/S)_\star}.
+\end{equation}
+
+\paragraph{(c) Governing wing area}
+The sizing wing area is taken as
+\begin{equation}
+S=\max\left(S_\mathrm{stall},\, S_{W/S}\right).
+\end{equation}
+
+\subsubsection{Step 3: Rotor disk area and rotor diameter from disk loading}
+Given a selected disk loading $(W/A)_\star$, the total disk area is
+\begin{equation}
+A=\frac{W}{(W/A)_\star}.
+\end{equation}
+For $N$ identical rotors,
+\begin{equation}
+A_r=\frac{A}{N},
+\end{equation}
+where $A_r$ is the disk area per rotor. Assuming a circular disk $A_r=\pi D^2/4$, the rotor diameter becomes
+\begin{equation}
+D=\sqrt{\frac{4A_r}{\pi}}
+=
+\sqrt{\frac{4}{\pi}\frac{A}{N}}.
+\end{equation}
+
+\subsubsection{Step 4: Hover electrical power from momentum theory}
+Using actuator-disk momentum theory in hover, the ideal induced power is
+\begin{equation}
+P_{\mathrm{h,ideal}}=\frac{W^{3/2}}{\sqrt{2\rho A}}.
+\end{equation}
+To represent non-ideal effects (installation/interference losses and profile losses), multiplicative correction factors are applied:
+\begin{equation}
+P_{\mathrm{h}} = P_{\mathrm{h,ideal}}\,k_\mathrm{int}\,k_\mathrm{pro},
+\end{equation}
+where $k_\mathrm{int}>1$ and $k_\mathrm{pro}>1$.
+
+Finally, converting to electrical power through the powertrain efficiency $\eta_\mathrm{pt}$,
+\begin{equation}
+P_{\mathrm{h,elec}}=\frac{P_{\mathrm{h}}}{\eta_\mathrm{pt}}.
+\end{equation}
+
+\subsubsection{Step 5: Cruise electrical power from a parabolic drag polar}
+At cruise speed $V_\mathrm{cruise}$, the dynamic pressure is
+\begin{equation}
+q=\frac{1}{2}\rho V_\mathrm{cruise}^2.
+\end{equation}
+The lift coefficient required for steady level cruise is
+\begin{equation}
+C_L=\frac{W}{qS}.
+\end{equation}
+Using a parabolic drag polar,
+\begin{equation}
+C_D = C_{D0}+kC_L^2,
+\end{equation}
+where $C_{D0}$ is the zero-lift drag coefficient and $k$ is the induced-drag factor.
+
+The aerodynamic drag is
+\begin{equation}
+D_a=qSC_D,
+\end{equation}
+and the corresponding shaft power required is
+\begin{equation}
+P_{\mathrm{c,shaft}}=D_a V_\mathrm{cruise}.
+\end{equation}
+Converting to electrical power using propulsive efficiency $\eta_\mathrm{p}$ and powertrain efficiency $\eta_\mathrm{pt}$ gives
+\begin{equation}
+P_{\mathrm{c,elec}}=\frac{P_{\mathrm{c,shaft}}}{\eta_\mathrm{p}\eta_\mathrm{pt}}.
+\end{equation}
+
+\subsubsection{Outputs of initial sizing}
+The initial sizing step therefore returns the set
+\begin{equation}
+\left\{S,\;A,\;D,\;P_{\mathrm{h,elec}},\;P_{\mathrm{c,elec}}\right\},
+\end{equation}
+which provides the first-cut geometry (wing area and rotor diameter) and the power levels that subsequently drive mission energy and battery/motor mass estimates in the overall MTOW iteration.
+
+
+
+8-10kg \cite{Jairam2024-sd}
+
+\bibliography{}
+
+\end{document}
