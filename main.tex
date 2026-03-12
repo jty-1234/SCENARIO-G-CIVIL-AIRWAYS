@@ -29,7 +29,6 @@
 
 \subsubsection{Drones}
 
-\section{}
 \subsection{Initial sizing method (symbolic formulation)}
 
 The initial sizing procedure starts from an assumed maximum take-off mass $m_0$ and uses two primary design choices:
@@ -138,8 +137,30 @@ The initial sizing step therefore returns the set
 which provides the first-cut geometry (wing area and rotor diameter) and the power levels that subsequently drive mission energy and battery/motor mass estimates in the overall MTOW iteration.
 
 
+\begin{table}[h!]
+\centering
+\small
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{ll}
+\hline
+Symbol & Meaning \\
+\hline
+$m_0,\ g,\ W$ & MTOW mass guess; gravity; weight $W=m_0 g$ \\
+$\rho$ & Air density \\
+$V_{\mathrm{stall}},\ V_{\mathrm{cruise}}$ & Stall speed; cruise speed \\
+$S,\ (W/S)_\star,\ C_{L,\max}$ & Wing area; chosen wing loading; max lift coefficient \\
+$A,\ (W/A)_\star,\ N,\ D$ & Total disk area; chosen disk loading; rotor count; rotor diameter \\
+$C_{D0},\ k,\ C_L,\ C_D$ & Drag polar terms; lift and drag coefficients in cruise \\
+$\eta_{\mathrm{p}},\ \eta_{\mathrm{pt}}$ & Propulsive efficiency; powertrain efficiency \\
+$k_{\mathrm{int}},\ k_{\mathrm{pro}}$ & Hover loss factors (interference; profile) \\
+$P_{\mathrm{h,elec}},\ P_{\mathrm{c,elec}}$ & Electrical hover power; electrical cruise power \\
+$\lambda,\ \mathcal{E}_{\mathrm{tot}}$ & Reserve factor; total mission energy \\
+\hline
+\end{tabular}
+\caption{Condensed symbol list for the sizing process.}
+\end{table}
 
-8-10kg \cite{Jairam2024-sd}
+
 
 \bibliography{}
 
