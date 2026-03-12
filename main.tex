@@ -31,21 +31,16 @@
 
 \subsection{Initial sizing method (symbolic formulation)}
 
-The initial sizing procedure starts from an assumed maximum take-off mass $m_0$ and uses two primary design choices:
-\begin{itemize}
-\item wing loading $W/S$,
-\item disk loading $W/A$,
-\end{itemize}
-together with mission requirements (stall speed $V_\mathrm{stall}$ and cruise speed $V_\mathrm{cruise}$). The goal is to obtain first-cut values of wing area $S$, total rotor disk area $A$, rotor diameter $D$, and the electrical power required in hover and cruise.
+The initial sizing procedure begins with an assumed maximum take-off mass $m_0$ and combines two principal design parameters, namely the wing loading $W/S$ and the disk loading $W/A$, with the key mission requirements represented by the stall speed $V_\mathrm{stall}$ and cruise speed $V_\mathrm{cruise}$. This formulation is intended to generate first-order estimates of the wing area $S$, the total rotor disk area $A$, the rotor diameter $D$, and the electrical power demand in both hover and cruise.
 
-\subsubsection{Step 1: Convert mass to weight}
+\subsubsection{Weight definition}
 \begin{equation}
 W = m_0 g ,
 \end{equation}
 where $g$ is gravitational acceleration.
 
-\subsubsection{Step 2: Wing area from stall constraint and wing-loading choice}
-Two lower bounds for the wing reference area $S$ are evaluated.
+\subsubsection{Wing area estimation}
+Two lower bounds for the wing reference area $S$ are evaluated in order to ensure compliance with both aerodynamic and design-loading requirements.
 
 \paragraph{(a) Stall constraint}
 At stall, the lift equals weight with $C_L=C_{L,\max}$:
@@ -63,13 +58,13 @@ Given a selected wing loading $(W/S)_\star$,
 S_{W/S}=\frac{W}{(W/S)_\star}.
 \end{equation}
 
-\paragraph{(c) Governing wing area}
+\paragraph{Governing wing area}
 The sizing wing area is taken as
 \begin{equation}
 S=\max\left(S_\mathrm{stall},\, S_{W/S}\right).
 \end{equation}
 
-\subsubsection{Step 3: Rotor disk area and rotor diameter from disk loading}
+\subsubsection{Rotor disk area and diameter}
 Given a selected disk loading $(W/A)_\star$, the total disk area is
 \begin{equation}
 A=\frac{W}{(W/A)_\star}.
@@ -85,7 +80,7 @@ D=\sqrt{\frac{4A_r}{\pi}}
 \sqrt{\frac{4}{\pi}\frac{A}{N}}.
 \end{equation}
 
-\subsubsection{Step 4: Hover electrical power from momentum theory}
+\subsubsection{Hover power estimation}
 Using actuator-disk momentum theory in hover, the ideal induced power is
 \begin{equation}
 P_{\mathrm{h,ideal}}=\frac{W^{3/2}}{\sqrt{2\rho A}}.
@@ -101,7 +96,7 @@ Finally, converting to electrical power through the powertrain efficiency $\eta_
 P_{\mathrm{h,elec}}=\frac{P_{\mathrm{h}}}{\eta_\mathrm{pt}}.
 \end{equation}
 
-\subsubsection{Step 5: Cruise electrical power from a parabolic drag polar}
+\subsubsection{Cruise power estimation}
 At cruise speed $V_\mathrm{cruise}$, the dynamic pressure is
 \begin{equation}
 q=\frac{1}{2}\rho V_\mathrm{cruise}^2.
